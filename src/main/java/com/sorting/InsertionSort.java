@@ -9,10 +9,10 @@ public class InsertionSort implements InstrumentationSort {
      * It does this by holding the value of the current index in a cache (currVal) and then replaces that
      * with the previous and vice-versa provided the swap rule is satisfied.
      *
-     * @param arr the array to be sorted
+     * @param arr   the array to be sorted
      * @param index the current index
      */
-    static void swapUntilSortedState(int[] arr, int index) {
+    void swapUntilSortedState(int[] arr, int index) {
         if (index == 0) return;
         if (arr[index] < arr[index - 1]) {
             int currVal = arr[index];
