@@ -4,28 +4,35 @@ import java.util.Arrays;
 
 public class InsertionSort implements InstrumentationSort {
 
+    /**
+     * Using recursion, it swaps the position of items in an array until a sorted state is attained.
+     * It does this by holding the value of the current index in a cache (currVal) and then replaces that
+     * with the previous and vice-versa provided the swap rule is satisfied.
+     *
+     * @param arr the array to be sorted
+     * @param index the current index
+     */
     static void swapUntilSortedState(int[] arr, int index) {
         if (index == 0) return;
         if (arr[index] < arr[index - 1]) {
-            //hold currVal in a temp cache
             int currVal = arr[index];
-
-            //swap current for previous
             arr[index] = arr[index - 1];
-
-            //swap previous for current
             arr[index - 1] = currVal;
-
             System.out.println(Arrays.toString(arr));
-
             swapUntilSortedState(arr, index - 1);
         }
     }
 
 
+    /**
+     * Sorts an arry in-place starting from the second item in the array.
+     * The {@link InsertionSort#swapUntilSortedState(int[], int)}
+     * is called when current value is less than the previous.
+     *
+     * @param arr the array to be sorted
+     */
     @Override
     public void sort(int[] arr) {
-        //start iterating from the second element in the list
         for (int i = 1; i < arr.length; i++) {
             int currVal = arr[i];
             int prevVal = arr[i - 1];
