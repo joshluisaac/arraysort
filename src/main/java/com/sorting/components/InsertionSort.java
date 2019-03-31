@@ -1,14 +1,18 @@
 package com.sorting.components;
 
 
+import com.sorting.model.SortResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
-public class InsertionSort implements InstrumentationSort {
+@Component
+public class InsertionSort extends AbstractSort implements InstrumentationSort {
 
     private static Logger LOG = LoggerFactory.getLogger(InsertionSort.class);
+    private int count = -1;
 
     /**
      * Implemented using recursion for elegance and readability.
@@ -45,16 +49,24 @@ public class InsertionSort implements InstrumentationSort {
         for (int i = 1; i < arr.length; i++) {
             int currVal = arr[i];
             int prevVal = arr[i - 1];
-            LOG.info("Iteration [{}]",i);
+            count++;
             //if the current item is greater than the previous then call swap method.
             if ((currVal < prevVal)) swapUntilSortedState(arr, i);
         }
         return arr;
     }
 
-    public static void main(String[] args) {
-        int[] arr = new int[]{7, 1, 3, 2, 4, 5, 6};
-        int[] result = new InsertionSort().sort(arr);
-        System.out.println(Arrays.toString(result));
+    /**
+     * A forwarding method which overrides the behaviour of the
+     * parent abstract method in an attempt to set the number of iterations.
+     *
+     * @param arr raw input array
+     * @return returns {@link SortResponse} which contains a bunch of properties
+     */
+    @Override
+    public SortResponse execute(int[] arr){
+        SortResponse response = super.execute(arr);
+        response.setCount(count);
+        return response;
     }
 }

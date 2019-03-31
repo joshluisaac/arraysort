@@ -1,15 +1,18 @@
 package com.sorting.components;
 
+import com.sorting.model.SortResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
-public class MergeSort implements InstrumentationSort {
+
+@Component
+public class MergeSort extends AbstractSort implements InstrumentationSort {
 
     private static Logger LOG = LoggerFactory.getLogger(MergeSort.class);
-
-    int count = 0;
+    private int count = -1;
 
     /**
      * Populates the left fragment of the array with left elements from the parent array.
@@ -64,15 +67,12 @@ public class MergeSort implements InstrumentationSort {
      * and can no longer be splitted any further.
      * It then propagates to the right array fragment and does the same splitting operation.
      * <p>
-     *
-     *
      * @param arr the array to be sorted
      * @return the sorted array
      */
 
     @Override
     public int[] sort(int[] arr) {
-
         /* base case condition */
         if (arr.length <= 1) return arr;
 
@@ -90,13 +90,12 @@ public class MergeSort implements InstrumentationSort {
     /**
      * Will merge the left and right sides of the array.
      *
+     *
      * @param leftArr the left array fragment
      * @param rightArr the right array fragment
      * @return the result of merging both arrays
      */
     int[] merge(int[] leftArr, int[] rightArr) {
-        System.out.println("Processing left/right: " + Arrays.toString(leftArr) + "|" + Arrays.toString(rightArr));
-
         int[] result = new int[leftArr.length + rightArr.length];
 
         int leftIndex = 0;
@@ -123,19 +122,23 @@ public class MergeSort implements InstrumentationSort {
                 resultIndex++;
                 rightIndex++;
             }
-            count++;
         }
+        count++;
         return result;
     }
 
-
-    public static void main(String[] args) {
-        //new MergeSort().sort(new int[]{9,7, 3, 1, 2, 4, 5, 6});
-        int[] result = new MergeSort().sort(new int[]{7, 3, 1, 2, 4, 5, 6});
-        System.out.println(Arrays.toString(result));
-
-
+    /**
+     * A forwarding method which overrides the behaviour of the
+     * parent abstract method in an attempt to set the number of iterations.
+     *
+     * @param arr raw input array
+     * @return returns {@link SortResponse} which contains a bunch of properties
+     */
+    @Override
+    public SortResponse execute(int[] arr){
+        SortResponse response = super.execute(arr);
+        response.setCount(count);
+        return response;
     }
-
 
 }
