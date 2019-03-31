@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MergeSort.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">arraysort</a> &gt; <a href="index.source.html" class="el_package">com.sorting.components</a> &gt; <span class="el_source">MergeSort.java</span></div><h1>MergeSort.java</h1><pre class="source lang-java linenums">package com.sorting.components;
+
+import com.sorting.model.SortResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+
+/**
+ * An implementation of {@link IMergeSort} that contains methods for performing merge sort.
+ *
+ * &lt;p&gt;The algorithm uses a divide and conquer algorithm that was invented by John von Neumann in 1945.
+ * (&lt;a href=&quot;https://en.wikipedia.org/wiki/Merge_sort&quot;&gt;MergeSort&lt;/a&gt;)
+ *
+ * &lt;p&gt; The algorithm offers &lt;strong&gt;O(n log(n))&lt;/strong&gt; performance in all cases (worst,average and best case)
+ *
+ * @author Joshua Nwankwo
+ * @version 1.0
+ * @since March 2019
+ */
+
+@Component(&quot;MergeSort&quot;)
+@Qualifier(&quot;MergeSort&quot;)
+<span class="fc" id="L25">public class MergeSort extends AbstractSort implements IMergeSort {</span>
+
+<span class="fc" id="L27">    private static Logger LOG = LoggerFactory.getLogger(MergeSort.class);</span>
+<span class="fc" id="L28">    private int count = -1;</span>
+
+
+    /**
+     * Calculates and returns an array midpoint.
+     *
+     * @param arr the input array
+     * @return the array midpoint
+     */
+    public int calculateMidPoint(int[] arr){
+<span class="fc" id="L38">        return arr.length / 2;</span>
+    }
+
+    /**
+     * Populates the left fragment of the array with left elements from the parent array.
+     *
+     * @param midPoint the midpoint
+     * @param left left array fragment
+     * @param arr the parent array
+     * @return resultant left array
+     */
+    public int[] loadLeftArray(int midPoint, int[] left, int[] arr) {
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        for (int i = 0; i &lt; midPoint; i++) {</span>
+<span class="fc" id="L51">            left[i] = arr[i];</span>
+        }
+<span class="fc" id="L53">        return left;</span>
+    }
+
+    /**
+     * Populates the right fragment of the array with right elements from the parent array.
+     *
+     * @param right right array fragment
+     * @param arr the parent array
+     * @return resultant right array
+     */
+    public int[] loadRightArray(int[] right, int[] arr) {
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        for (int i = 0; i &lt; right.length; i++) {</span>
+<span class="fc" id="L65">            right[i] = arr[((arr.length - right.length) + i)];</span>
+        }
+<span class="fc" id="L67">        return right;</span>
+    }
+
+    /**
+     * Will construct the right array based on the midpoint and the parent array.
+     * If the length of the parent array is divisible by 2 without a remainder
+     * This means the length is an even number and the initial array can be divided into equal parts.
+     * However, if it is not divisible by 2 then it is an odd number and an else construction rule is applied.
+     *
+     * @param midPoint the midpoint
+     * @param arr the parent array
+     * @return the right array
+     */
+    public int[] constructRightArray(int midPoint, int[] arr) {
+<span class="fc bfc" id="L81" title="All 2 branches covered.">        if (arr.length % 2 == 0) {</span>
+<span class="fc" id="L82">            return new int[midPoint];</span>
+        } else {
+<span class="fc" id="L84">            return new int[midPoint + 1];</span>
+        }
+    }
+
+
+    /**
+     * This is a recursive split operation which will split the left side of the array until it gets to the base case
+     * and can no longer be splitted any further.
+     * It then propagates to the right array fragment and does the same splitting operation.
+     * &lt;p&gt;
+     * @param arr the array to be sorted
+     * @return the sorted array
+     */
+
+    @Override
+    public int[] sort(int[] arr) {
+        /* base case condition */
+<span class="fc bfc" id="L101" title="All 2 branches covered.">        if (arr.length &lt;= 1) return arr;</span>
+
+<span class="fc" id="L103">        int midPoint = calculateMidPoint(arr);</span>
+<span class="fc" id="L104">        int[] left = new int[midPoint];</span>
+<span class="fc" id="L105">        int[] right = constructRightArray(midPoint, arr);</span>
+
+        /* populate left &amp; right arrays */
+<span class="fc" id="L108">        left = loadLeftArray(midPoint, left, arr);</span>
+<span class="fc" id="L109">        right = loadRightArray(right, arr);</span>
+
+<span class="fc" id="L111">        return merge(sort(left), sort(right));</span>
+    }
+
+    /**
+     * Will merge the left and right sides of the array.
+     *
+     *
+     * @param leftArr the left array fragment
+     * @param rightArr the right array fragment
+     * @return the result of merging both arrays
+     */
+    public int[] merge(int[] leftArr, int[] rightArr) {
+<span class="fc" id="L123">        int[] result = new int[leftArr.length + rightArr.length];</span>
+
+<span class="fc" id="L125">        int leftIndex = 0;</span>
+<span class="fc" id="L126">        int rightIndex = 0;</span>
+<span class="fc" id="L127">        int resultIndex = 0;</span>
+
+<span class="fc bfc" id="L129" title="All 4 branches covered.">        while (leftIndex &lt; leftArr.length || rightIndex &lt; rightArr.length) {</span>
+<span class="fc bfc" id="L130" title="All 4 branches covered.">            if (leftIndex &lt; leftArr.length &amp;&amp; rightIndex &lt; rightArr.length) {</span>
+<span class="fc bfc" id="L131" title="All 2 branches covered.">                if (leftArr[leftIndex] &lt; rightArr[rightIndex]) {</span>
+<span class="fc" id="L132">                    result[resultIndex] = leftArr[leftIndex];</span>
+<span class="fc" id="L133">                    resultIndex++;</span>
+<span class="fc" id="L134">                    leftIndex++;</span>
+                } else {
+<span class="fc" id="L136">                    result[resultIndex] = rightArr[rightIndex];</span>
+<span class="fc" id="L137">                    resultIndex++;</span>
+<span class="fc" id="L138">                    rightIndex++;</span>
+                }
+<span class="fc bfc" id="L140" title="All 2 branches covered.">            } else if (leftIndex &lt; leftArr.length) {</span>
+<span class="fc" id="L141">                result[resultIndex] = leftArr[leftIndex];</span>
+<span class="fc" id="L142">                resultIndex++;</span>
+<span class="fc" id="L143">                leftIndex++;</span>
+<span class="pc bpc" id="L144" title="1 of 2 branches missed.">            } else if (rightIndex &lt; rightArr.length) {</span>
+<span class="fc" id="L145">                result[resultIndex] = rightArr[rightIndex];</span>
+<span class="fc" id="L146">                resultIndex++;</span>
+<span class="fc" id="L147">                rightIndex++;</span>
+            }
+        }
+<span class="fc" id="L150">        count++;</span>
+<span class="fc" id="L151">        return result;</span>
+    }
+
+    /**
+     * A forwarding method which overrides the behaviour of the
+     * parent abstract method in an attempt to set the number of iterations.
+     *
+     * @param arr raw input array
+     * @return returns {@link SortResponse} which contains a bunch of properties
+     */
+    @Override
+    public SortResponse execute(int[] arr){
+<span class="fc" id="L163">        SortResponse response = super.execute(arr);</span>
+<span class="fc" id="L164">        response.setCount(count);</span>
+<span class="fc" id="L165">        return response;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
