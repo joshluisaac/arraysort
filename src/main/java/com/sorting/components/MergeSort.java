@@ -7,6 +7,18 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 
+/**
+ * An implementation of {@link IMergeSort} that contains methods for performing merge sort.
+ *
+ * <p>The algorithm uses a divide and conquer algorithm that was invented by John von Neumann in 1945.
+ * (<a href="https://en.wikipedia.org/wiki/Merge_sort">MergeSort</a>)
+ *
+ * <p> The algorithm offers <strong>O(n log(n))</strong> performance in all cases (worst,average and best case)
+ *
+ * @author Joshua Nwankwo
+ * @version 1.0
+ * @since March 2019
+ */
 
 @Component("MergeSort")
 @Qualifier("MergeSort")
@@ -20,7 +32,7 @@ public class MergeSort extends AbstractSort implements IMergeSort {
      * Calculates and returns an array midpoint.
      *
      * @param arr the input array
-     * @return
+     * @return the array midpoint
      */
     public int calculateMidPoint(int[] arr){
         return arr.length / 2;

@@ -7,7 +7,21 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
+
+/**
+ * An implementation of {@link InstrumentationSort} that contains methods for performing insertion sort.
+ * Efficient for (quite) small data sets, much like other quadratic sorting algorithms.
+ *
+ * <p>The algorithm uses a recursive approach to sorting.
+ * (<a href="https://en.wikipedia.org/wiki/Insertion_sort">InsertionSort</a>)
+ *
+ * <p> The algorithm offers <strong>О(N^2)</strong> quadratic for worst and average case performance.
+ * While it's best case performance is linear <strong>О(N)</strong>
+ *
+ * @author Joshua Nwankwo
+ * @version 1.0
+ * @since March 2019
+ */
 
 @Component
 @Qualifier("InsertionSort")
@@ -29,7 +43,7 @@ public class InsertionSort extends AbstractSort implements InstrumentationSort {
      * @param arr the array to be sorted
      * @param index the current index
      */
-    void swapUntilSortedState(int[] arr, int index) {
+    public void swapUntilSortedState(int[] arr, int index) {
         if (index == 0) return;
         if (arr[index] < arr[index - 1]) {
             int currVal = arr[index];

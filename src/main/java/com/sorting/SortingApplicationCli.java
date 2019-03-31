@@ -5,12 +5,18 @@ import com.sorting.services.SortService;
 import com.sorting.utils.JsonUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-@SpringBootApplication
+//@SpringBootApplication
+@Configuration
+@ComponentScan(basePackages = {"com.sorting"}, excludeFilters={
+        @ComponentScan.Filter(type= FilterType.ASSIGNABLE_TYPE, value=SortApplication.class)})
 public class SortingApplicationCli {
 
     private static final Logger LOG = LoggerFactory.getLogger(SortingApplicationCli.class);
