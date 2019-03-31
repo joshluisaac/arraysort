@@ -5,7 +5,10 @@ import java.util.Arrays;
 public class InsertionSort implements InstrumentationSort {
 
     /**
-     * Using recursion, it swaps the position of items in an array until a sorted state is attained.
+     * Implemented using recursion for elegance and readability.
+     * A case for recursion is made in the following stackoverflow links
+     * https://softwareengineering.stackexchange.com/questions/242889/are-there-advantages-for-using-recursion-over-iteration-other-than-sometimes-r
+     * It swaps the position of items in an array until a sorted state is attained.
      * It does this by holding the value of the current index in a cache (currVal) and then replaces that
      * with the previous and vice-versa provided the swap rule is satisfied.
      *
@@ -18,14 +21,12 @@ public class InsertionSort implements InstrumentationSort {
             int currVal = arr[index];
             arr[index] = arr[index - 1];
             arr[index - 1] = currVal;
-            System.out.println(Arrays.toString(arr));
             swapUntilSortedState(arr, index - 1);
         }
     }
 
-
     /**
-     * Sorts an arry in-place starting from the second item in the array.
+     * Sorts an array in-place starting from the second item in the array.
      * The {@link InsertionSort#swapUntilSortedState(int[], int)}
      * is called when current value is less than the previous.
      *

@@ -28,10 +28,15 @@ public class MergeSort {
             right[i] = arr[((arr.length - right.length) + i)];
         }
         int[] result = new int[arr.length];
+
+        //System.out.println("Processing left " + Arrays.toString(left));
+        //System.out.println("Processing right " + Arrays.toString(right));
+
         left = sort(left);
         right = sort(right);
 
         result = merge(left,right);
+        System.out.println("Result " + Arrays.toString(result));
 
         return result;
     }
@@ -82,7 +87,7 @@ public class MergeSort {
     public static void main(String[] args) {
         //int[] result = new MergeSort().merge(new int[]{6,4,7},new int[]{1,3,2});
         //System.out.println("Final " + Arrays.toString(result));
-        new MergeSort().sort(new int[]{7, 1, 3, 2, 4, 5, 6});
+        new MergeSort().sort(new int[]{9,7, 3, 1, 2, 4, 5, 6});
 
     }
 
