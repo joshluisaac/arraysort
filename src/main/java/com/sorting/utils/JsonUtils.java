@@ -1,10 +1,9 @@
-package com.avantsystems.util;
-
-import java.io.Reader;
+package com.sorting.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.Reader;
 import java.lang.reflect.Type;
 //com.google.gson.reflect.TypeToken
 
