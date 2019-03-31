@@ -7,7 +7,9 @@ public class InsertionSort implements InstrumentationSort {
     /**
      * Implemented using recursion for elegance and readability.
      * A case for recursion is made in the following stackoverflow links
-     * https://softwareengineering.stackexchange.com/questions/242889/are-there-advantages-for-using-recursion-over-iteration-other-than-sometimes-r
+     *
+     * @see <a href="https://softwareengineering.stackexchange.com/questions/242889/">Question 242889</a>
+     *
      * It swaps the position of items in an array until a sorted state is attained.
      * It does this by holding the value of the current index in a cache (currVal) and then replaces that
      * with the previous and vice-versa provided the swap rule is satisfied.
