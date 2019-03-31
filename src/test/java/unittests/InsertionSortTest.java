@@ -1,14 +1,16 @@
 package unittests;
 
-import com.sorting.components.IMergeSort;
+
 import com.sorting.components.InsertionSort;
 import com.sorting.components.InstrumentationSort;
-import com.sorting.components.MergeSort;
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Unit test for InsertionSort
+ */
 public class InsertionSortTest {
 
 
