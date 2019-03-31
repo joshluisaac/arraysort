@@ -1,8 +1,14 @@
 package com.sorting.components;
 
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Arrays;
 
 public class InsertionSort implements InstrumentationSort {
+
+    private static Logger LOG = LoggerFactory.getLogger(InsertionSort.class);
 
     /**
      * Implemented using recursion for elegance and readability.
