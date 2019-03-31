@@ -9,6 +9,8 @@ public class MergeSort implements InstrumentationSort {
 
     private static Logger LOG = LoggerFactory.getLogger(MergeSort.class);
 
+    int count = 0;
+
     /**
      * Populates the left fragment of the array with left elements from the parent array.
      *
@@ -46,7 +48,7 @@ public class MergeSort implements InstrumentationSort {
      *
      * @param midPoint the midpoint
      * @param arr the parent array
-     * @return
+     * @return the right array
      */
     int[] constructRightArray(int midPoint, int[] arr) {
         if (arr.length % 2 == 0) {
@@ -56,8 +58,6 @@ public class MergeSort implements InstrumentationSort {
         }
     }
 
-    //recursiveSplit
-    //recursiveMerge
 
     /**
      * This is a recursive split operation which will split the left side of the array until it gets to the base case
@@ -87,6 +87,13 @@ public class MergeSort implements InstrumentationSort {
         return merge(sort(left), sort(right));
     }
 
+    /**
+     * Will merge the left and right sides of the array.
+     *
+     * @param leftArr the left array fragment
+     * @param rightArr the right array fragment
+     * @return the result of merging both arrays
+     */
     int[] merge(int[] leftArr, int[] rightArr) {
         System.out.println("Processing left/right: " + Arrays.toString(leftArr) + "|" + Arrays.toString(rightArr));
 
@@ -116,6 +123,7 @@ public class MergeSort implements InstrumentationSort {
                 resultIndex++;
                 rightIndex++;
             }
+            count++;
         }
         return result;
     }

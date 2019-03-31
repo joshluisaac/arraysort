@@ -45,7 +45,7 @@ public class InsertionSort implements InstrumentationSort {
         for (int i = 1; i < arr.length; i++) {
             int currVal = arr[i];
             int prevVal = arr[i - 1];
-            System.out.println("Iteration [" + i + "] ");
+            LOG.info("Iteration [{}]",i);
             //if the current item is greater than the previous then call swap method.
             if ((currVal < prevVal)) swapUntilSortedState(arr, i);
         }
