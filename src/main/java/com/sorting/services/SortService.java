@@ -9,9 +9,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class SortService {
 
-    @Autowired
-    @Qualifier("MergeSort")
+
+
     InstrumentationSort sort;
+
+    @Autowired
+    public SortService(@Qualifier("MergeSort") InstrumentationSort sort){
+        this.sort = sort;
+    }
 
 
     public SortResponse execute(int[] arr){
