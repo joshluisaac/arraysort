@@ -8,10 +8,6 @@ public abstract class AbstractSort implements InstrumentationSort {
 
     public int count;
 
-    public AbstractSort() {
-        System.out.println("running this");
-    }
-
     public SortResponse execute(int[] arr){
         final long startTime = System.currentTimeMillis();
         final int[] result = sort(arr);
