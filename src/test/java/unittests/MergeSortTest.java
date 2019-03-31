@@ -98,7 +98,7 @@ public class MergeSortTest {
     }
 
     @Test
-    public void executing_sort_returns_json_response() {
+    public void executing_merge_sort_returns_json_response() {
 
         /* given the following array */
         int[] arr = new int[]{7, 3, 9, 1, 2, 4, 5, 6};

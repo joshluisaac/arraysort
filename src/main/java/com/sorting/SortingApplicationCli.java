@@ -5,15 +5,22 @@ import com.sorting.services.SortService;
 import com.sorting.utils.JsonUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-//@SpringBootApplication
+/**
+ * This is the main class for using SortingApplicationCli and serves as the
+ * application entry point.
+ *
+ * @author Joshua Nwankwo
+ * @version 1.0
+ * @since March 2019
+ */
+
+
 @Configuration
 @ComponentScan(basePackages = {"com.sorting"}, excludeFilters={
         @ComponentScan.Filter(type= FilterType.ASSIGNABLE_TYPE, value=SortApplication.class)})
@@ -22,9 +29,9 @@ public class SortingApplicationCli {
     private static final Logger LOG = LoggerFactory.getLogger(SortingApplicationCli.class);
 
     public static void main(String[] args) {
+        int[] input = new int[]{7, 1, 3, 2, 4, 5, 6};
         ApplicationContext context =  new AnnotationConfigApplicationContext(SortingApplicationCli.class);
-        SortService service = context.getBean(SortService.class);
-        SortResponse response = service.execute(new int[]{7, 3, 1, 2, 4, 5, 6,9,6,6,7,3,8,9,0,0,5,7,82,-1});
+        SortResponse response = context.getBean(SortService.class).execute(input);
 
         System.out.println(new JsonUtils().toJson(response));
 
