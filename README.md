@@ -12,8 +12,7 @@ Used Dagger dependency injection framework
 
 
 
-### A case for recursion
-------------------------------------
+## A case for recursion
 
 [Are there advantages for using recursion over iteration - other than sometimes readability and elegance? [duplicate]](https://softwareengineering.stackexchange.com/questions/242889/are-there-advantages-for-using-recursion-over-iteration-other-than-sometimes-r)
 
