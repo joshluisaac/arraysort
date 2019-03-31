@@ -14,7 +14,7 @@ public class InsertionSort implements InstrumentationSort {
      * It does this by holding the value of the current index in a cache (currVal) and then replaces that
      * with the previous and vice-versa provided the swap rule is satisfied.
      *
-     * @param arr   the array to be sorted
+     * @param arr the array to be sorted
      * @param index the current index
      */
     void swapUntilSortedState(int[] arr, int index) {
@@ -35,7 +35,7 @@ public class InsertionSort implements InstrumentationSort {
      * @param arr the array to be sorted
      */
     @Override
-    public void sort(int[] arr) {
+    public int[] sort(int[] arr) {
         for (int i = 1; i < arr.length; i++) {
             int currVal = arr[i];
             int prevVal = arr[i - 1];
@@ -43,11 +43,12 @@ public class InsertionSort implements InstrumentationSort {
             //if the current item is greater than the previous then call swap method.
             if ((currVal < prevVal)) swapUntilSortedState(arr, i);
         }
-
+        return arr;
     }
 
     public static void main(String[] args) {
         int[] arr = new int[]{7, 1, 3, 2, 4, 5, 6};
-        new InsertionSort().sort(arr);
+        int[] result = new InsertionSort().sort(arr);
+        System.out.println(Arrays.toString(result));
     }
 }
