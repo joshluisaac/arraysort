@@ -22,8 +22,7 @@ import org.springframework.context.annotation.FilterType;
 
 
 @Configuration
-@ComponentScan(basePackages = {"com.sorting"}, excludeFilters={
-        @ComponentScan.Filter(type= FilterType.ASSIGNABLE_TYPE, value= SortingApplicationServer.class)})
+@ComponentScan("com.sorting")
 public class SortingApplicationCli {
 
     private static final Logger LOG = LoggerFactory.getLogger(SortingApplicationCli.class);
