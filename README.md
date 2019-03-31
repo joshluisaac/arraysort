@@ -1,5 +1,8 @@
 
 
+Figures out the best sorting technique based on the size of the input.
+Generally insertion sort has a quadratic complexity of O(N^2)
+
 
 ### A case for recursion
 
