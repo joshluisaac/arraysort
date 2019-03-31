@@ -9,7 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.FilterType;
+
 
 /**
  * This is the main class for using SortingApplicationCli and serves as the
@@ -19,8 +19,6 @@ import org.springframework.context.annotation.FilterType;
  * @version 1.0
  * @since March 2019
  */
-
-
 @Configuration
 @ComponentScan("com.sorting")
 public class SortingApplicationCli {
@@ -31,9 +29,7 @@ public class SortingApplicationCli {
         int[] input = new int[]{7, 1, 3, 2, 4, 5, 6};
         ApplicationContext context =  new AnnotationConfigApplicationContext(SortingApplicationCli.class);
         SortResponse response = context.getBean(SortService.class).execute(input);
-
         System.out.println(new JsonUtils().toJson(response));
-
         LOG.info("Array size: {}",response.getArraySize());
         LOG.info("Minimum iterations: {}",response.getCount());
         LOG.info("Sorted result: {}",response.getSortResult());

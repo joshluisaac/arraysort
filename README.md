@@ -11,6 +11,7 @@ It also ships with a compiled version of the project making it makes it easy exe
 The compiled version of the project resided in the `target` directory and can be executed from command-line/terminal
 
 Bill of materials
+--------------------------
 1. Tests written with Junit.
 2. Source code.
 1. Code test coverage report: This can be found here `/target/site/cobertura`
@@ -26,9 +27,16 @@ Prerequisites
 Executing the application
 -------------------------
 
-To sort an array of integer numbers run the following command
+To sort an array of integer numbers
+
+First update line 29 of the main method in [SortingApplicationCli.java](src/main/java/com/sorting/SortingApplicationCli.java)
+
+![Alt text][mainclass]
+
 
 `mvn clean install && java -jar target/arraysort-0.0.1-SNAPSHOT.jar`
+
+This command will build the project and execute the application.
 
 
 Executing the above command will produce the following output
@@ -82,7 +90,7 @@ mvn clean install -Dmaven.test.skip dependency:copy-dependencies
 Running the tests.
 ------------------
 
-The tests are written in groovy using Junit framework.
+The tests are written in Java using Junit framework.
 The source code for the tests are located in `src/test/java`.
 I wrote the tests to be simple and readable. Anyone looking at the tests would find it easy to figure out what's going on.
 
@@ -132,3 +140,6 @@ Used Dagger dependency injection framework
 
 
 [Are recursive methods always better than iterative methods in Java? [closed]](https://stackoverflow.com/questions/15346774/are-recursive-methods-always-better-than-iterative-methods-in-java)
+
+
+[mainclass]: mainclass.png "Logo Title Text 2"
