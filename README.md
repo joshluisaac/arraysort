@@ -1,7 +1,6 @@
 
 
-Figures out the best sorting technique based on the size of the input.
-Generally insertion sort has a quadratic complexity of O(N^2)
+
 
 
 What is included?
@@ -27,14 +26,12 @@ Prerequisites
 Executing the application
 -------------------------
 
-To sort an array of integer numbers
+To sort an array of integer numbers follow these steps:
 
-First update line 29 of the main method in [SortingApplicationCli.java](src/main/java/com/sorting/SortingApplicationCli.java)
+1. First update __line 29__ of the main method in [SortingApplicationCli.java](src/main/java/com/sorting/SortingApplicationCli.java)
+2. `mvn clean install && java -jar target/arraysort-0.0.1-SNAPSHOT.jar`
 
 ![Alt text][mainclass]
-
-
-`mvn clean install && java -jar target/arraysort-0.0.1-SNAPSHOT.jar`
 
 This command will build the project and execute the application.
 
@@ -53,6 +50,12 @@ Executing the above command will produce the following output
 2019-03-30 09:47:29,839 INFO  Sorted result: [1, 2, 3, 4, 5, 6, 7]
 2019-03-30 09:47:29,839 INFO  Running time: 0 ms
 ```
+
+>> 1. `count:` this is the minimum number of iterations.
+>> 2. `sortResult`: this is the sorted integer array
+>> 3. `runningTime`: Running time, how long it took to execute.
+>> 4. `arraySize`: the size of the input array.
+
 
 
 
@@ -118,15 +121,11 @@ Tests run: 9, Failures: 0, Errors: 0, Skipped: 0
 ```
 
 
-
-
-
-
 ## Continuous integration
 Used Travis for continuous integration
 
 ## Dependency injection
-Used Dagger dependency injection framework
+Used spring dependency injection framework
 
 
 
