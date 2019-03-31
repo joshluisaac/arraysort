@@ -6,15 +6,25 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
 
 
 @Component("MergeSort")
 @Qualifier("MergeSort")
-public class MergeSort extends AbstractSort implements InstrumentationSort {
+public class MergeSort extends AbstractSort implements IMergeSort {
 
     private static Logger LOG = LoggerFactory.getLogger(MergeSort.class);
     private int count = -1;
+
+
+    /**
+     * Calculates and returns an array midpoint.
+     *
+     * @param arr the input array
+     * @return
+     */
+    public int calculateMidPoint(int[] arr){
+        return arr.length / 2;
+    }
 
     /**
      * Populates the left fragment of the array with left elements from the parent array.
@@ -24,7 +34,7 @@ public class MergeSort extends AbstractSort implements InstrumentationSort {
      * @param arr the parent array
      * @return resultant left array
      */
-    int[] loadLeftArray(int midPoint, int[] left, int[] arr) {
+    public int[] loadLeftArray(int midPoint, int[] left, int[] arr) {
         for (int i = 0; i < midPoint; i++) {
             left[i] = arr[i];
         }
@@ -38,7 +48,7 @@ public class MergeSort extends AbstractSort implements InstrumentationSort {
      * @param arr the parent array
      * @return resultant right array
      */
-    int[] loadRightArray(int[] right, int[] arr) {
+    public int[] loadRightArray(int[] right, int[] arr) {
         for (int i = 0; i < right.length; i++) {
             right[i] = arr[((arr.length - right.length) + i)];
         }
@@ -55,7 +65,7 @@ public class MergeSort extends AbstractSort implements InstrumentationSort {
      * @param arr the parent array
      * @return the right array
      */
-    int[] constructRightArray(int midPoint, int[] arr) {
+    public int[] constructRightArray(int midPoint, int[] arr) {
         if (arr.length % 2 == 0) {
             return new int[midPoint];
         } else {
@@ -78,7 +88,7 @@ public class MergeSort extends AbstractSort implements InstrumentationSort {
         /* base case condition */
         if (arr.length <= 1) return arr;
 
-        int midPoint = arr.length / 2;
+        int midPoint = calculateMidPoint(arr);
         int[] left = new int[midPoint];
         int[] right = constructRightArray(midPoint, arr);
 
@@ -97,7 +107,7 @@ public class MergeSort extends AbstractSort implements InstrumentationSort {
      * @param rightArr the right array fragment
      * @return the result of merging both arrays
      */
-    int[] merge(int[] leftArr, int[] rightArr) {
+    public int[] merge(int[] leftArr, int[] rightArr) {
         int[] result = new int[leftArr.length + rightArr.length];
 
         int leftIndex = 0;

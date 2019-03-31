@@ -13,23 +13,14 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 @SpringBootApplication
 public class SortingApplicationCli {
 
-
     private static final Logger LOG = LoggerFactory.getLogger(SortingApplicationCli.class);
 
-
     public static void main(String[] args) {
-        //MergeSort sort = new MergeSort();
-        //InsertionSort sort = new InsertionSort();
-
         ApplicationContext context =  new AnnotationConfigApplicationContext(SortingApplicationCli.class);
         SortService service = context.getBean(SortService.class);
         SortResponse response = service.execute(new int[]{7, 3, 1, 2, 4, 5, 6,9,6,6,7,3,8,9,0,0,5,7,82,-1});
 
-
-
-        //SortResponse response = new SortingApplicationCli().sort.execute(new int[]{7, 3, 1, 2, 4, 5, 6,9,6,6,7,3,8,9,0,0,5,7,82,-1});
         System.out.println(new JsonUtils().toJson(response));
-
 
         LOG.info("Array size: {}",response.getArraySize());
         LOG.info("Minimum iterations: {}",response.getCount());
