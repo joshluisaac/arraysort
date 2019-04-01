@@ -27,6 +27,7 @@ This is the __Functionality test cases document__ which is part of the project d
 
 ## Test coverage
 
+![Alt text][coverage]
 
 
 
@@ -50,3 +51,6 @@ Tests run: 9, Failures: 0, Errors: 0, Skipped: 0
 
 
 [functional_tests]: functional_tests.png "Logo Title Text 2"
+
+[coverage]: test_coverage.png "Logo Title Text 2"
+
