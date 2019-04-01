@@ -1,5 +1,7 @@
 
-# PROJECT INTENT AND SOME BACKGROUND
+## PROJECT INTENT AND SOME BACKGROUND
+
+[![Build Status](https://travis-ci.org/joshluisaac/arraysort.svg?branch=master)](https://travis-ci.org/joshluisaac/arraysort)
 
 The intent of this project is to allow the user to sort a collection of integers in the most efficient way.
 Efficient in this context is defined in terms of time and space complexity.
