@@ -1,6 +1,15 @@
 
+# PROJECT INTENT AND SOME BACKGROUND
 
+The intent of this project is to allow the user to sort a collection of integers in the most efficient way.
+Efficient in this context is defined in terms of time and space complexity.
 
+I scoped the problem as a merge sort problem and implemented it in accordance to the
+divide and conquer algorithm that was proposed and invented by John von Neumann in 1945.
+
+The algorithm offers __O(n log(n))__ performance in all cases (worst,average and best case) and is better suited for
+sorting large collection of integers. Other sorting algorithms such as insertion sort, radix sort or bubble sort yields a
+quadratic __O(N^2)__ performance which isn't scalable for large data sets.
 
 
 What is included?
