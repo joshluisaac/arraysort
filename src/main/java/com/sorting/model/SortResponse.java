@@ -1,5 +1,7 @@
 package com.sorting.model;
 
+//A POJO object representing sort response details
+
 public class SortResponse {
 
     public int count;
