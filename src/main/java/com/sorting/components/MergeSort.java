@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 /**
  * An implementation of {@link IMergeSort} that contains methods for performing merge sort.
  *
- * <p>The algorithm uses a divide and conquer algorithm that was invented by John von Neumann in 1945.
+ * <p>The algorithm uses a divide and conquer technique which was invented by John von Neumann in 1945.
  * (<a href="https://en.wikipedia.org/wiki/Merge_sort">MergeSort</a>)
  *
  * <p> The algorithm offers <strong>O(n log(n))</strong> performance in all cases (worst,average and best case)
@@ -24,7 +24,7 @@ import org.springframework.stereotype.Component;
 @Qualifier("MergeSort")
 public class MergeSort extends AbstractSort implements IMergeSort {
 
-    private static Logger LOG = LoggerFactory.getLogger(MergeSort.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MergeSort.class);
     private int count = -1;
 
 
