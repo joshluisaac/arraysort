@@ -121,6 +121,7 @@ public class MergeSort extends AbstractSort implements IMergeSort {
 
     /**
      * Will merge the left and right sides of the array.
+     * This will merge left and right array fragments that are on the same level.
      *
      * The leftPtr, rightPtr and resultPtr cannot possibly exceed the length of
      * their respective arrays.
