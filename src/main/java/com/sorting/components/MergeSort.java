@@ -122,7 +122,8 @@ public class MergeSort extends AbstractSort implements IMergeSort {
     /**
      * Will merge the left and right sides of the array.
      *
-     * The leftPtr, rightPtr and resultPtr cannot possibly exceed the length of their respective arrays
+     * The leftPtr, rightPtr and resultPtr cannot possibly exceed the length of
+     * their respective arrays.
      *
      *
      * @param leftArr  the left array fragment
@@ -131,7 +132,7 @@ public class MergeSort extends AbstractSort implements IMergeSort {
      */
     public int[] merge(int[] leftArr, int[] rightArr) {
 
-        //result which is an ascending array
+        // result which is an ascending array
         int[] result = new int[leftArr.length + rightArr.length];
 
         // pointer to the current position in left array
