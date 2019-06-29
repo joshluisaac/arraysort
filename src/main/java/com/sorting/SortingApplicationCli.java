@@ -26,7 +26,7 @@ public class SortingApplicationCli {
     private static final Logger LOG = LoggerFactory.getLogger(SortingApplicationCli.class);
 
     public static void main(String[] args) {
-        int[] input = new int[]{7, 1, 3, 2, 4, 5, 6};
+        int[] input = new int[]{7, 12, 3, 2, 9, -8, 14, 4, 5, 6};
         ApplicationContext context =  new AnnotationConfigApplicationContext(SortingApplicationCli.class);
         SortResponse response = context.getBean(SortService.class).execute(input);
         System.out.println(new JsonUtils().toJson(response));

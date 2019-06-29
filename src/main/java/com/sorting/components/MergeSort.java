@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+
 /**
  * An implementation of {@link IMergeSort} that contains methods for performing
  * merge sort.
@@ -116,6 +118,8 @@ public class MergeSort extends AbstractSort implements IMergeSort {
         left = loadLeftArray(midPoint, left, arr);
         right = loadRightArray(right, arr);
 
+        System.out.println(Arrays.toString(left) +" $$ "+ Arrays.toString(right));
+
         return merge(sort(left), sort(right));
     }
 
@@ -132,6 +136,7 @@ public class MergeSort extends AbstractSort implements IMergeSort {
      * @return the result of merging both arrays
      */
     public int[] merge(int[] leftArr, int[] rightArr) {
+        System.out.println("Merging..." + Arrays.toString(leftArr) + "||" + Arrays.toString(rightArr));
 
         // result which is an ascending array
         int[] result = new int[leftArr.length + rightArr.length];
@@ -167,6 +172,7 @@ public class MergeSort extends AbstractSort implements IMergeSort {
             }
         }
         count++;
+        System.out.println("Result... " + Arrays.toString(result));
         return result;
     }
 
